@@ -6,4 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::middleware('auth:sanctum')->get('/posts', [PostController::class, 'index']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/api/posts', [PostController::class, 'index']);
+});
